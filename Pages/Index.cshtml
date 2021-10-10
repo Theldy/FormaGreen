@@ -1,0 +1,25 @@
+﻿@page
+@using  Models
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="container">
+        <div id="accueil" style="text-align: center; height:60%">
+            <h1 style=" width:60%; height:50%; margin:auto auto; color:green;" >Bienvenue chez FormaGreen ! </h1>
+        </div>
+
+    </div>
+}
+else
+{
+<div class="container" style="text-align: center;height:60%">
+    <h1 style=" width:60%; height:50%; margin:auto auto">Bienvenue chez FormaGreen ! </h1>
+    <h3>Connectez vous pour naviguer sur le site!</h3>
+    <hr />
+</div>
+}
+

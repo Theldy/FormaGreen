@@ -1,0 +1,28 @@
+﻿@page
+@model FormaGreen.Pages.Partenaires.DeleteModel
+
+@{
+    ViewData["Title"] = "Supprimer";
+}
+
+<h1>Supprimer</h1>
+
+<h3>Etes vous de vouloir supprimer ce partenaire ?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-4">Société</dt>
+        <dd class="col-sm-8">@Model.Partenaire.Societe</dd>
+
+        <dt class="col-sm-4">Description</dt>
+        <dd class="col-sm-8">@Model.Partenaire.Description</dd>
+
+        <dt class="col-sm-4">Coupon</dt>
+        <dd class="col-sm-8">@Model.Partenaire.Coupon</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Partenaire.Id" />
+        <input type="submit" value="Elimina" class="btn btn-danger" />
+        <p style="margin-top: 10px;"><a asp-page="./Index">Retour à la liste</a></p>
+    </form>
+</div>

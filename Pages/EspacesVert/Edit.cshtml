@@ -1,0 +1,64 @@
+﻿@page
+@model FormaGreen.Pages.EspacesVert.EditModel
+
+@{
+    ViewData["Title"] = "Modification";
+}
+
+<h1>Modifier un espace</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Espace.Id" />
+            <div class="form-group">
+                <label asp-for="Espace.Etablissement" class="control-label">Lieu</label>
+                <input asp-for="Espace.Etablissement" class="form-control" />
+                <span asp-validation-for="Espace.Etablissement" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Espace.Ville" class="control-label">Ville</label>
+                <input asp-for="Espace.Ville" class="form-control" />
+                <span asp-validation-for="Espace.Ville" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Espace.CP" class="control-label">Code Postal</label>
+                <input asp-for="Espace.CP" class="form-control" />
+                <span asp-validation-for="Espace.CP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Espace.Adresse" class="control-label">Adresse</label>
+                <input asp-for="Espace.Adresse" class="form-control" />
+                <span asp-validation-for="Espace.Adresse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Espace.Contact" class="control-label">Contact</label>
+                <input asp-for="Espace.Contact" class="form-control" />
+                <span asp-validation-for="Espace.Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Espace.Representant" class="control-label">Representant</label>
+                <input asp-for="Espace.Representant" class="form-control" />
+                <span asp-validation-for="Espace.Representant" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Espace.Map" class="control-label">Lien Map</label>
+                <input asp-for="Espace.Map" class="form-control" />
+                <span asp-validation-for="Espace.Map" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sauvegarder" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

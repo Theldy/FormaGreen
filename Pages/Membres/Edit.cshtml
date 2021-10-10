@@ -1,0 +1,49 @@
+﻿@page
+@model FormaGreen.Pages.Membres.EditModel
+
+@{
+    ViewData["Title"] = "Modification";
+}
+
+<h1>Modifier membre</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input id="Id-data" type="hidden" asp-for="Membre.MembreId" />
+            <div class="form-group">
+                <label asp-for="Membre.Nom" class="control-label">Nom</label>
+                <input asp-for="Membre.Nom" class="form-control" />
+                <span asp-validation-for="Membre.Nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Membre.TypeMembre_" class="control-label">Profil</label>
+                <select asp-for="TypeMembreId" asp-items="@(new SelectList(Model.Categories, "TypeMembreId", "Label"))" class="form-control"></select>
+                <span asp-validation-for="Membre.TypeMembre_" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Membre.DateSouscription" class="control-label">Date de souscription</label>
+                <input asp-for="Membre.DateSouscription" class="form-control" type="date" />
+                <span asp-validation-for="Membre.DateSouscription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Membre.DateEcheance" class="control-label">Fin de souscription</label>
+                <input asp-for="Membre.DateEcheance" class="form-control" type="date" />
+                <span asp-validation-for="Membre.DateEcheance" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Sauvegarder" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

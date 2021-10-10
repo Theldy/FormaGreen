@@ -1,0 +1,34 @@
+﻿@page
+@model FormaGreen.Pages.Partenaires.DetailsModel
+
+@{
+    ViewData["Title"] = Model.Partenaire.Societe;
+}
+
+<h1>@Model.Partenaire.Societe</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="word-break: break-word; padding-top: 15px;">
+            <dl class="row">
+                <dt class="col-sm-4">Société</dt>
+                <dd class="col-sm-8">@Model.Partenaire.Societe</dd>
+
+                <dt class="col-sm-4">Description</dt>
+                <dd class="col-sm-8">@Model.Partenaire.Description</dd>
+
+                <dt class="col-sm-4">Coupon</dt>
+                <dd class="col-sm-8">@Model.Partenaire.Coupon</dd>
+
+            </dl>
+            @if (User.Identity.IsAuthenticated && (User.IsInRole("admin") || User.IsInRole("staff")))
+            {
+                <div style="margin-bottom: 15px;">
+                    <a asp-page="./Edit" asp-route-id="@Model.Partenaire.Id" class="btn btn-outline-secondary" style="margin-right: 10px; ">Modifier</a>
+                    <a asp-page="./Delete" asp-route-id="@Model.Partenaire.Id" class="btn btn-outline-danger">Supprimer</a>
+                </div>
+            }
+        </div>
+        
+    </div>
+</div>

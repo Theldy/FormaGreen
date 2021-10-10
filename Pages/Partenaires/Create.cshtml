@@ -1,0 +1,43 @@
+﻿@page
+@using Models
+@model FormaGreen.Pages.Partenaires.CreateModel
+
+@{
+    ViewData["Title"] = "Ajouter";
+}
+
+<h1>Ajouter membre</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Partenaire.Societe" class="control-label">Partenaire</label>
+                <input asp-for="Partenaire.Societe" class="form-control" />
+                <span asp-validation-for="Partenaire.Societe" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="Partenaire.Description" class="control-label">Indirizzo</label>
+                <input asp-for="Partenaire.Description" class="form-control" />
+                <span asp-validation-for="Partenaire.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Partenaire.Coupon" class="control-label">Sito web</label>
+                <input asp-for="Partenaire.Coupon" class="form-control" />
+                <span asp-validation-for="Partenaire.Coupon" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <input type="submit" value="Ajouter" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>    
+</div>
+
+<div>
+    <a asp-page="Index">Retour à la liste</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

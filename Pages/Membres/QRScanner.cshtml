@@ -1,0 +1,31 @@
+﻿@page
+@model FormaGreen.Pages.Membres.QRScannerModel
+@{
+    ViewData["Title"] = "QRScanner";
+}
+
+<div class="row">
+    <h1 class="col-md-6" style="margin: 10px 0;">Scanner de QRCode</h1>
+    <div class="scan-div" style="display: flex; text-align: center; margin: auto">        
+        <video id="preview"></video>
+    </div>
+</div>
+<div>
+    <a asp-page="./Index">Retour à la liste</a>
+</div>
+<script type="text/javascript" src="~/lib/instascan.min.js"></script>
+<script type="text/javascript">
+    let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+    scanner.addListener('scan', function (content) {
+        console.log(content);
+    });
+    Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+            scanner.start(cameras[0]);
+        } else {
+            console.error('No cameras found.');
+        }
+    }).catch(function (e) {
+        console.error(e);
+    });
+</script>

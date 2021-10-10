@@ -1,0 +1,35 @@
+﻿@page
+@model FormaGreen.Pages.EspacesVert.DeleteModel
+
+@{
+    ViewData["Title"] = "Supprimer";
+}
+
+<h1>Supprimer</h1>
+
+<h3>Etes vous sur de vouloir supprimer cet espace vert ?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Espace</dt>
+        <dd class="col-sm-10">@Model.Espace.Etablissement</dd>
+
+        <dt class="col-sm-2">Adresse</dt>
+        <dd class="col-sm-10">@Model.Espace.Adresse</dd>
+
+        <dt class="col-sm-2">Ville</dt>
+        <dd class="col-sm-10">@Model.Espace.CP @Model.Espace.Ville </dd>
+
+        <dt class="col-sm-2">Contact</dt>
+        <dd class="col-sm-10">@Model.Espace.Contact </dd>
+
+        <dt class="col-sm-2">Représentant</dt>
+        <dd class="col-sm-10">@Model.Espace.Representant </dd>
+     
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Espace.Id" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        <p style="margin-top: 10px;"><a asp-page="./Index">Retourner à la liste</a></p>
+    </form>
+</div>

@@ -1,0 +1,31 @@
+﻿@page
+@model FormaGreen.Pages.Membres.DeleteModel
+
+@{
+    ViewData["Title"] = "Supprimer";
+}
+
+<h1>Supprimer</h1>
+
+<h3>Etes vous sur de vouloir supprimer ce membre?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Nom</dt>
+        <dd class="col-sm-10">@Model.Membre.Nom</dd>
+
+        <dt class="col-sm-2">Catégorie</dt>
+        <dd class="col-sm-10">@Model.Membre.TypeMembre_.Label</dd>
+
+        <dt class="col-sm-2">Date de souscription</dt>
+        <dd class="col-sm-10">@Model.Membre.DateSouscription</dd>
+
+        <dt class="col-sm-2">Fin de souscription</dt>
+        <dd class="col-sm-10">@Model.Membre.DateEcheance</dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Membre.MembreId" />
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        <p style="margin-top: 10px;"><a asp-page="./Index">Retourner à la liste</a></p>
+    </form>
+</div>

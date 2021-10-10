@@ -1,0 +1,37 @@
+﻿@page
+@using Models
+@model FormaGreen.Pages.Users.IndexModel
+
+@{
+    ViewData["Title"] = "Gestion d'utilisateur";
+}
+
+<h1>Gestion d'utilisateurs</h1>
+
+<div class="container">
+    <div class="row">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Desactivé</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (UserWithRole user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.User.Email</td>
+                        <td>@(user.Role == null ? "utilisateur" : (user.Role == "admin" ? "administrateur" : user.Role))</td>
+                        <td>@((user.User.LockoutEnd == null ? false : DateTime.Parse(user.User.LockoutEnd.ToString()) > DateTime.Now) ? "oui" : "non")</td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@user.User.Id" class="btn btn-sm btn-outline-primary @(user.User.Id == Model.CurrentUserId ? "disabled" : "")">Modifier</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

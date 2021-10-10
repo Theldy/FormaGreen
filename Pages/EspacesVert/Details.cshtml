@@ -1,0 +1,45 @@
+﻿@page
+@model FormaGreen.Pages.EspacesVert.DetailsModel
+
+@{
+    ViewData["Title"] = Model.Espace.Etablissement;
+}
+
+<h1>@Model.Espace.Etablissement</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" style="word-break: break-word; padding-top: 15px;">
+            <dl class="row">
+                <dt class="col-sm-4">Lieu</dt>
+                <dd class="col-sm-8">@Model.Espace.Etablissement.</dd>
+
+                <dt class="col-sm-4">Adresse</dt>
+                <dd class="col-sm-8">@Model.Espace.Adresse</dd>
+
+                <dt class="col-sm-4">Ville</dt>
+                <dd class="col-sm-8">@Model.Espace.CP @Model.Espace.Ville </dd>
+
+                <dt class="col-sm-4">Contact</dt>
+                <dd class="col-sm-8">@Model.Espace.Contact</dd>
+
+                <dt class="col-sm-4">Représentante</dt>
+                <dd class="col-sm-8">@Model.Espace.Representant</dd>
+            </dl>
+            @if (User.Identity.IsAuthenticated && (User.IsInRole("admin") || User.IsInRole("staff")))
+            {
+                <div style="margin-bottom: 15px;">
+                    <a asp-page="./Edit" asp-route-id="@Model.Espace.Id" class="btn btn-outline-secondary" style="margin-right: 10px; ">Modifier</a>
+                    <a asp-page="./Delete" asp-route-id="@Model.Espace.Id" class="btn btn-outline-danger">Supprimer</a>
+                </div>
+            }
+        </div>
+        
+    </div>
+    @if (Model.Espace.Map != null && Model.Espace.Map.Length > 0)
+    {
+        <div class="row">
+            <iframe src="@Model.Espace.Map" class="shadow" width="600" height="450" style="border:0; margin: 30px 10px;"></iframe>
+        </div>
+    }
+</div>
